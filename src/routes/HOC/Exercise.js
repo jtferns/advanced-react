@@ -28,11 +28,29 @@ const API = {
 */
 
 const withPeople = (Component) => class extends React.Component {
+  state = {
+    data: [],
+  }
+  componentDidMount() {
+    API
+      .getData()
+      .then((d) => this.setState(() => ({ data: d })))
+  }
   render() {
-    return <Component />
+    return <Component {...this.props} {...this.state} />
   }
 }
 
-const App = () => <div />
+const App = ({ data }) => <div>
+  {
+    data.length === 0 ? <p>Loading...</p> :
+    data.map(({ name, location }, index) => {
+      return <div key={index}>
+        <h2>{name}</h2>
+        <p>{location}</p>
+      </div>
+    })
+  }
+</div>
 
 export default withPeople(App);
