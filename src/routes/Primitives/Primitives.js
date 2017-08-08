@@ -11,6 +11,9 @@ import { View, Text, StyleSheet } from 'react-primitives';
 *  Touchable: A base component for interaction.
 */
 
+// Great for React Native or across various platforms
+// Prepackaged solution for quick app bootstrapping?
+
 export default class Primitives extends React.Component {
   render() {
     return (
@@ -21,6 +24,7 @@ export default class Primitives extends React.Component {
   }
 }
 
+// These styles are memoized for performance optimizations
 const styles = StyleSheet.create({
   container: {
     padding: 50,
