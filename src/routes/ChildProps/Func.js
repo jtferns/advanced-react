@@ -6,11 +6,11 @@ class CurrentMousePosition extends React.Component {
     y: '',
   }
   componentDidMount() {
-    console.log('componentDidMount')
+    // console.log('componentDidMount')
     window.addEventListener('mousemove', this.onmousemove)
   }
   componentWillUnmount() {
-    console.log('componentWillUnmount')
+    // console.log('componentWillUnmount')
     window.removeEventListener('mousemove', this.onmousemove)
   }
   onmousemove = (e) => {
@@ -20,21 +20,17 @@ class CurrentMousePosition extends React.Component {
   }
   render() {
     return <div>
-      {this.props.children(this.state)}
+      { this.props.children(this.state) }
     </div>
   }
 };
 
 const Func = () => (
-  <div>
-    <CurrentMousePosition>
-      {
-        ({ x, y }) => <p>x: {x}, y: {y}</p>
-      }
-    </CurrentMousePosition>
-  </div>
+  <CurrentMousePosition>
+    {
+      ({ x, y }) => <p>x: {x}, y: {y}</p>
+    }
+  </CurrentMousePosition>
 );
 
 export default Func;
-
-
