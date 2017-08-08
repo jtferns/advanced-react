@@ -1,11 +1,20 @@
 import React from 'react'
 
-const override = (overrideProps) => (Component) => (props) =>
-  <Component {...props} {...overrideProps} />
+// const override = (overrideProps) => (Component) => (props) =>
+//   <Component {...props} {...overrideProps} />
 
-const User = ({ name, city }) => <p>{name} {city}</p>
+// rewrite override using a React class
+const override = (overrideProps) => (Component) => {
+  return class extends React.Component {
+    render() {
+      return <Component {...this.props} {...overrideProps} />
+    }
+  }
+}
 
-const AlwaysKen = override({ name: 'Ken' })(User)
+const User = ({ name, city }) => <p>{name}, {city}</p>
+
+const AlwaysKen = override({ name: 'Ken', city: 'Hoboken' })(User)
 
 export default () => (
   <div>

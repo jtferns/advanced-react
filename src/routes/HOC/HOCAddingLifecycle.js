@@ -6,11 +6,12 @@ const MainComponent = () =>
 const AddingLifecycle = (Component, node, type, func) => {
   return class extends React.Component {
     componentDidMount() {
+      console.log('componentDidMount');
       node.addEventListener(type, func);
     }
     render() {
       return (
-        <MainComponent {...this.state} />
+        <Component {...this.state} />
       )
     }
   }
