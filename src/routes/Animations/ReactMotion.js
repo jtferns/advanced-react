@@ -1,5 +1,5 @@
 import React from 'react';
-import { Motion, spring } from 'react-motion';
+import { Motion, spring, presets } from 'react-motion';
 
 /* Exercise:
 *  Create a button that expands and changes its
@@ -8,6 +8,9 @@ import { Motion, spring } from 'react-motion';
 *  less than 4 values, then the button is disabled, if it has
 *  4 or more values, then it is enabled and animated.
 */
+
+// Create a <Motion> container and give it a style object
+// spring takes a value and some configuration options; can also use presets
 
 export default class ReactMotion extends React.PureComponent {
   state = {
@@ -25,7 +28,7 @@ export default class ReactMotion extends React.PureComponent {
       <div>
         <p>React Motion</p>
         <button onClick={this.animateMargin}>Animate</button>
-        <Motion style={{ x: spring(this.state.x), y: spring(this.state.y), }}>
+        <Motion style={{ x: spring(this.state.x, presets.gentle), y: spring(this.state.y, presets.gentle), }}>
           {
             ({ x, y }) => {
               return (
